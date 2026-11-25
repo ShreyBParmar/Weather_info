@@ -1,0 +1,19 @@
+services:
+  - type: web
+    name: weather-info-backend
+    runtime: python
+    buildCommand: pip install -r backend/requirements.txt && cd backend && alembic upgrade head
+    startCommand: uvicorn backend.app.main:app --host 0.0.0.0 --port $PORT
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.11.9
+      - key: APP_ENV
+        value: production
+      - key: DEBUG
+        value: false
+      - key: OPENWEATHER_API_KEY
+        sync: false
+      - key: DATABASE_URL
+        sync: false
+      - key: CORS_ORIGINS
+        sync: false
