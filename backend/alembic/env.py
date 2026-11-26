@@ -3,16 +3,16 @@ import sys
 import os
 from pathlib import Path
 
-# Add project root to sys.path so backend modules can be imported
-sys.path.insert(0, str(Path(__file__).resolve().parents[2]))
+# Add backend/ dir to sys.path so app modules can be imported
+sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 
 from sqlalchemy import engine_from_config
 from sqlalchemy import pool
 
 from alembic import context
-from backend.app.core.config import settings
-from backend.app.core.database import Base, engine as app_engine
-import backend.app.models  # load models
+from app.core.config import settings
+from app.core.database import Base, engine as app_engine
+import app.models  # load models
 
 # this is the Alembic Config object, which provides
 # access to the values within the .ini file in use.

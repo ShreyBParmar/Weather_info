@@ -2,8 +2,8 @@ import asyncio
 from datetime import datetime, timezone
 from typing import List, Dict, Any, Optional
 import httpx
-from backend.app.core.config import settings
-from backend.app.schemas.weather import (
+from app.core.config import settings
+from app.schemas.weather import (
     CurrentWeatherResponse,
     ForecastResponse,
     HourlyForecastItem,
@@ -12,7 +12,7 @@ from backend.app.schemas.weather import (
     ComparisonCityItem,
     ComparisonResponse,
 )
-from backend.app.utils.exceptions import (
+from app.utils.exceptions import (
     WeatherAPIException,
     CityNotFoundException,
     InvalidAPIKeyException,

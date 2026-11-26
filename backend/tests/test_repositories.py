@@ -1,7 +1,7 @@
 import pytest
-from backend.app.repositories.weather_repository import WeatherRepository
-from backend.app.schemas.favorite import FavoriteCreate
-from backend.app.schemas.history import HistoryCreate
+from app.repositories.weather_repository import WeatherRepository
+from app.schemas.favorite import FavoriteCreate
+from app.schemas.history import HistoryCreate
 
 
 def test_repository_favorites_session_isolation(db_session):

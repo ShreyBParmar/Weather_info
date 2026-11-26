@@ -1,10 +1,10 @@
 from typing import List
 from fastapi import APIRouter, Depends, Header, HTTPException, status
 from sqlalchemy.orm import Session
-from backend.app.core.database import get_db
-from backend.app.repositories.weather_repository import WeatherRepository
-from backend.app.schemas.favorite import FavoriteCreate, FavoriteResponse
-from backend.app.utils.exceptions import DuplicateFavoriteException
+from app.core.database import get_db
+from app.repositories.weather_repository import WeatherRepository
+from app.schemas.favorite import FavoriteCreate, FavoriteResponse
+from app.utils.exceptions import DuplicateFavoriteException
 
 router = APIRouter(prefix="/favorites", tags=["Favorites"])
 

@@ -1,9 +1,9 @@
 from typing import List
 from fastapi import APIRouter, Depends, Header, status
 from sqlalchemy.orm import Session
-from backend.app.core.database import get_db
-from backend.app.repositories.weather_repository import WeatherRepository
-from backend.app.schemas.history import HistoryCreate, HistoryResponse
+from app.core.database import get_db
+from app.repositories.weather_repository import WeatherRepository
+from app.schemas.history import HistoryCreate, HistoryResponse
 
 router = APIRouter(prefix="/history", tags=["Search History"])
 

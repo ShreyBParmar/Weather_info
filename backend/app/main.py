@@ -1,19 +1,11 @@
-import sys
-from pathlib import Path
-
-# Add project root to sys.path so 'backend.app' imports succeed from any CWD
-_PROJECT_ROOT = str(Path(__file__).resolve().parent.parent.parent)
-if _PROJECT_ROOT not in sys.path:
-    sys.path.insert(0, _PROJECT_ROOT)
-
 from contextlib import asynccontextmanager
 from fastapi import FastAPI, Request
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import JSONResponse
-from backend.app.core.config import settings
-from backend.app.core.database import engine, Base
-import backend.app.models  # Ensure models are imported
-from backend.app.api.routes import weather, favorites, history
+from app.core.config import settings
+from app.core.database import engine, Base
+import app.models  # Ensure models are imported
+from app.api.routes import weather, favorites, history
 
 
 @asynccontextmanager

@@ -1,9 +1,9 @@
 from typing import List, Optional
 from sqlalchemy.orm import Session
-from backend.app.models.favorite import FavoriteCity
-from backend.app.models.search_history import SearchHistory
-from backend.app.schemas.favorite import FavoriteCreate
-from backend.app.schemas.history import HistoryCreate
+from app.models.favorite import FavoriteCity
+from app.models.search_history import SearchHistory
+from app.schemas.favorite import FavoriteCreate
+from app.schemas.history import HistoryCreate
 
 
 class WeatherRepository:

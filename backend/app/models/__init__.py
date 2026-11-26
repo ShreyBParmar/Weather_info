@@ -1,5 +1,5 @@
-from backend.app.core.database import Base
-from backend.app.models.favorite import FavoriteCity
-from backend.app.models.search_history import SearchHistory
+from app.core.database import Base
+from app.models.favorite import FavoriteCity
+from app.models.search_history import SearchHistory
 
 __all__ = ["Base", "FavoriteCity", "SearchHistory"]

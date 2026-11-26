@@ -1,13 +1,13 @@
 from typing import List, Optional
 from fastapi import APIRouter, Query, Depends
-from backend.app.schemas.weather import (
+from app.schemas.weather import (
     CurrentWeatherResponse,
     ForecastResponse,
     ComparisonResponse,
     CitySuggestionItem
 )
-from backend.app.services.weather_service import WeatherService
-from backend.app.utils.exceptions import CityNotFoundException
+from app.services.weather_service import WeatherService
+from app.utils.exceptions import CityNotFoundException
 
 router = APIRouter(prefix="/weather", tags=["Weather"])
 

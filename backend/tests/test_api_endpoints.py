@@ -1,6 +1,6 @@
 from unittest.mock import AsyncMock, patch, MagicMock
 import httpx
-from backend.tests.test_weather_service import MOCK_CURRENT_WEATHER_JSON, MOCK_FORECAST_JSON
+from tests.test_weather_service import MOCK_CURRENT_WEATHER_JSON, MOCK_FORECAST_JSON
 
 
 def test_health_check(client):
@@ -16,7 +16,7 @@ def test_api_weather_current_endpoint(client):
     mock_resp.json.return_value = MOCK_CURRENT_WEATHER_JSON
 
     with patch("httpx.AsyncClient.get", new_callable=AsyncMock, return_value=mock_resp), \
-         patch("backend.app.services.weather_service.settings.OPENWEATHER_API_KEY", "test_key"):
+         patch("app.services.weather_service.settings.OPENWEATHER_API_KEY", "test_key"):
         response = client.get("/api/weather/current?city=London")
         assert response.status_code == 200
         data = response.json()
@@ -30,7 +30,7 @@ def test_api_weather_forecast_endpoint(client):
     mock_resp.json.return_value = MOCK_FORECAST_JSON
 
     with patch("httpx.AsyncClient.get", new_callable=AsyncMock, return_value=mock_resp), \
-         patch("backend.app.services.weather_service.settings.OPENWEATHER_API_KEY", "test_key"):
+         patch("app.services.weather_service.settings.OPENWEATHER_API_KEY", "test_key"):
         response = client.get("/api/weather/forecast?city=London")
         assert response.status_code == 200
         data = response.json()

@@ -1,8 +1,8 @@
 import pytest
 from unittest.mock import AsyncMock, patch, MagicMock
 import httpx
-from backend.app.services.weather_service import WeatherService
-from backend.app.utils.exceptions import (
+from app.services.weather_service import WeatherService
+from app.utils.exceptions import (
     CityNotFoundException,
     InvalidAPIKeyException,
     RateLimitException,

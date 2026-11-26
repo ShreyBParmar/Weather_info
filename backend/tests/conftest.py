@@ -11,7 +11,7 @@ from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 from sqlalchemy.pool import StaticPool
 
-from backend.app.core.database import Base, get_db
+from app.core.database import Base, get_db
 
 # In-memory SQLite for testing
 SQLALCHEMY_DATABASE_URL = "sqlite:///:memory:"
@@ -24,9 +24,9 @@ engine = create_engine(
 TestingSessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
 
 # Patch app engine before importing app so lifespan uses test engine
-with patch("backend.app.core.database.engine", engine):
-    from backend.app.main import app
-    import backend.app.models
+with patch("app.core.database.engine", engine):
+    import app.models  # noqa: F401
+    from app.main import app
 
 
 @pytest.fixture(scope="session", autouse=True)
@@ -58,7 +58,7 @@ def client(db_session):
             pass
 
     app.dependency_overrides[get_db] = override_get_db
-    with patch("backend.app.main.engine", engine):
+    with patch("app.main.engine", engine):
         with TestClient(app) as test_client:
             yield test_client
     app.dependency_overrides.clear()
